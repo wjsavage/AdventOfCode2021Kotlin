@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
             = File(fileName).useLines { it.toList() }.map{it.toInt()}
 
     val lines = readFileAsLinesUsingUseLines("src\\day1\\input")
-
+//  A
     var current = lines[0]
     var total = 0
     for(i in lines.indices){
@@ -17,5 +17,27 @@ fun main(args: Array<String>) {
         current = lines[i]
     }
 
-    print("A: $total")
+    println("A: $total")
+
+//  B
+    var sums = mutableListOf<Int>()
+
+    for(i in lines.indices){
+        if (i < (lines.size - 2)){
+            sums.add(lines[i] + lines[i+1] + lines[i+2])
+        }
+    }
+
+    current = sums[0]
+    total = 0
+    for(i in sums.indices){
+        if (sums[i] > current){
+            total += 1
+        }
+        current = sums[i]
+    }
+
+    println("B: $total")
+
+
 }
